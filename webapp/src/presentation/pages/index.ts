@@ -1,2 +1,2 @@
-export * from './assistant/AssistantPage';
-export * from './train-bot/TrainBotPage';
+export * from "./assistant/AssistantPage";
+export * from "./train-bot/TrainBotPage";

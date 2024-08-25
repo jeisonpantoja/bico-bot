@@ -1,19 +1,18 @@
-import { createBrowserRouter } from "react-router-dom";
-import { TrainBotPage, AssistantPage } from "../pages";
 import { DashboardLayout } from "../layouts/DashboardLayout";
-import { BsRobot, BsTerminal } from "react-icons/bs";
+import { AssistantPage, TrainBotPage } from "../pages";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 export const menuRoutes = [
   {
-    to: "/train-bot",
-    icon: <BsRobot />,
-    title: "Entrenar Bot",
-    description: "Entrenar bot con documentos",
+    to: "/audio-to-text",
+    icon: "fa-solid fa-comment-dots",
+    title: "Audio a texto",
+    description: "Convertir audio a texto",
     component: <TrainBotPage />,
   },
   {
     to: "/assistant",
-    icon: <BsTerminal />,
+    icon: "fa-solid fa-user",
     title: "Asistente",
     description: "Información del asistente",
     component: <AssistantPage />,
@@ -29,6 +28,10 @@ export const router = createBrowserRouter([
         path: route.to,
         element: route.component,
       })),
+      {
+        path: "",
+        element: <Navigate to={menuRoutes[0].to} />,
+      },
     ],
   },
 ]);
