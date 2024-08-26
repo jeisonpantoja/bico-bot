@@ -1,18 +1,19 @@
 import { DashboardLayout } from "../layouts/DashboardLayout";
 import { AssistantPage, TrainBotPage } from "../pages";
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import { RiFileUploadLine, RiRobot2Line } from "react-icons/ri";
 
 export const menuRoutes = [
   {
-    to: "/audio-to-text",
-    icon: "fa-solid fa-comment-dots",
-    title: "Audio a texto",
-    description: "Convertir audio a texto",
+    to: "/train-bot",
+    icon: <RiFileUploadLine className="text-2xl mr-4 text-indigo-400"/>,
+    title: "Entrenar bot",
+    description: "Entrenar el bot con documentos",
     component: <TrainBotPage />,
   },
   {
     to: "/assistant",
-    icon: "fa-solid fa-user",
+    icon: <RiRobot2Line className="text-2xl mr-4 text-indigo-400"/>,
     title: "Asistente",
     description: "Información del asistente",
     component: <AssistantPage />,
