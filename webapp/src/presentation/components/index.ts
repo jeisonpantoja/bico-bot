@@ -1,1 +1,1 @@
-
+export * from './sidebar/SidebarMenuItem';
