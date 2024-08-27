@@ -9,9 +9,9 @@ export const DashboardLayout = () => {
         <h1 className="font-semibold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 bg-clip-text text-transparent">
           BiCo Bot
         </h1>
-        <span className="text-xl">Bienvenido</span>
+        <span className="text-lg">Bienvenido</span>
 
-        <div className="border-gray-700 border my-3" />
+        <div className="border-waikawa-gray-500 border my-3" />
 
         {/* Opciones del menú */}
         {menuRoutes.map((option) => (

@@ -19,7 +19,7 @@ export const SidebarMenuItem = (option: TSidebarMenuItemProps) => {
     >
       <span>{option.icon}</span>
       <div className="flex flex-col flex-grow">
-        <span className="text-white text-lg font-semibold">{option.title}</span>
+        <span className="text-white text-base">{option.title}</span>
         <span className="text-gray-400 text-sm">{option.description}</span>
       </div>
     </NavLink>

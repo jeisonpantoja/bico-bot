@@ -1,5 +1,10 @@
+import { DropzoneFile, FileList } from "../../components";
+
 export const TrainBotPage = () => {
   return (
-    <div>TrainBotPage</div>
-  )
-}
+    <>
+      <DropzoneFile />
+      <FileList />
+    </>
+  );
+};

@@ -6,14 +6,14 @@ import { RiFileUploadLine, RiRobot2Line } from "react-icons/ri";
 export const menuRoutes = [
   {
     to: "/train-bot",
-    icon: <RiFileUploadLine className="text-2xl mr-4 text-indigo-400"/>,
+    icon: <RiFileUploadLine className="text-2xl mr-4 text-waikawa-gray-500"/>,
     title: "Entrenar bot",
     description: "Entrenar el bot con documentos",
     component: <TrainBotPage />,
   },
   {
     to: "/assistant",
-    icon: <RiRobot2Line className="text-2xl mr-4 text-indigo-400"/>,
+    icon: <RiRobot2Line className="text-2xl mr-4 text-waikawa-gray-500"/>,
     title: "Asistente",
     description: "Información del asistente",
     component: <AssistantPage />,
