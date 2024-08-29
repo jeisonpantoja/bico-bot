@@ -1,10 +1,9 @@
-import { DropzoneFile, FileList } from "../../components";
+import { DropzoneFile } from "../../components";
 
 export const TrainBotPage = () => {
   return (
     <>
       <DropzoneFile />
-      <FileList />
     </>
   );
 };
