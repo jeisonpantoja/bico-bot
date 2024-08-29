@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { RiDeleteBin7Line, RiUploadLine } from "react-icons/ri";
 import icon_doc from "../../../assets/icons/icon-doc.svg";
+import { CardFile } from "../card-file/CardFile";
 
 export const DropzoneFile = () => {
   const [files, setFiles] = useState<(File & { preview: string })[]>([]);
@@ -62,27 +63,7 @@ export const DropzoneFile = () => {
       </form>
       <div className="gap-2 flex justify-center items-center flex-wrap">
         {files.map((file, index) => (
-          <Card
-            shadow="sm"
-            key={index}
-            className="border border-waikawa-gray-500 bg-waikawa-gray-800/50 rounded-lg w-40"
-          >
-            <CardBody className="overflow-visible py-2 justify-center items-center rounded-lg bg-waikawa-gray-600">
-              <Image
-                alt={file.name}
-                className="w-full object-contain h-[140px]"
-                src={icon_doc}
-              />
-            </CardBody>
-            <CardFooter className="justify-between">
-              <div className="text-xs font-semibold truncate">{file.name}</div>
-              <div className="">
-                <Button isIconOnly onPress={() => console.log("press")}>
-                  <RiDeleteBin7Line className="text-xl" />
-                </Button>
-              </div>
-            </CardFooter>
-          </Card>
+          <CardFile key={index} name={file.name} icon={icon_doc} />
         ))}
       </div>
     </>
