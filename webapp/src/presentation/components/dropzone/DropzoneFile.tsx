@@ -1,15 +1,13 @@
-import { Button, Card, CardBody, CardFooter, Image } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { RiDeleteBin7Line, RiUploadLine } from "react-icons/ri";
-import icon_doc from "../../../assets/icons/icon-doc.svg";
-import { CardFile } from "../card-file/CardFile";
+import { RiUploadLine } from "react-icons/ri";
+import { FileList } from '../file-list/FileList';
 
 export const DropzoneFile = () => {
-  const [files, setFiles] = useState<(File & { preview: string })[]>([]);
+  const [files, setFiles] = useState<(File[])>([]);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    console.log(acceptedFiles);
     if (acceptedFiles.length > 0) {
       setFiles((previousFiles) => [
         ...previousFiles,
@@ -24,14 +22,14 @@ export const DropzoneFile = () => {
 
   return (
     <>
-      <form className="h-1/3 w-full flex flex-col justify-center items-center">
-        <div className="w-4/5 h-3/4 bg-blue-400 border border-dashed rounded-lg">
+      <form className="h-1/4 w-full flex flex-col justify-center items-center">
+        <div className="w-4/5 h-3/4 border border-dashed rounded-lg">
           <div
             {...getRootProps()}
-            className="bg-waikawa-gray-600 w-ful flex flex-col justify-center items-center h-full"
+            className="bg-waikawa-gray-600/50 w-ful flex flex-col justify-center items-center h-full"
           >
             <div>
-              <RiUploadLine className="text-4xl mb-5" />
+              <RiUploadLine className="text-4xl mb-2" />
             </div>
             <input {...getInputProps()} />
             {isDragActive ? (
@@ -41,7 +39,7 @@ export const DropzoneFile = () => {
                 <div className="">
                   Drag and drop some files here or click to select files
                 </div>
-                <div className="text-xs text-waikawa-gray-800">
+                <div className="text-xs text-waikawa-gray-400">
                   You can upload markdown files
                 </div>
               </div>
@@ -61,11 +59,7 @@ export const DropzoneFile = () => {
         </div>
         {/* File list*/}
       </form>
-      <div className="gap-2 flex justify-center items-center flex-wrap">
-        {files.map((file, index) => (
-          <CardFile key={index} name={file.name} icon={icon_doc} />
-        ))}
-      </div>
+      <FileList files={files}/>
     </>
   );
 };

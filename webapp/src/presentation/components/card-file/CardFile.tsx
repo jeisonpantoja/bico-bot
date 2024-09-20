@@ -1,12 +1,15 @@
 import { Card, CardBody, CardFooter, Button, Image } from "@nextui-org/react";
 import { RiDeleteBin7Line } from "react-icons/ri";
+import icon_doc from "../../../assets/icons/icon-doc.svg";
 
-type TCardFileProps = {
+export type TCardFileProps = {
   name: string;
-  icon: string;
+  size: number;
+  type: string;
 };
 
-export const CardFile = ({ name, icon }: TCardFileProps) => {
+export const CardFile = (file: TCardFileProps) => {
+  const { name, } = file;
   return (
     <Card
       shadow="sm"
@@ -16,7 +19,7 @@ export const CardFile = ({ name, icon }: TCardFileProps) => {
         <Image
           alt={name}
           className="w-[70px] object-contain h-[140px]"
-          src={icon}
+          src={icon_doc}
         />
       </CardBody>
       <CardFooter className="justify-between">
