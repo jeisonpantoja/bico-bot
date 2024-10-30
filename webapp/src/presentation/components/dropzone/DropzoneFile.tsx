@@ -3,8 +3,10 @@ import { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { RiUploadLine } from "react-icons/ri";
 import { FileList } from '../file-list/FileList';
+import axios from 'axios';
 
 export const DropzoneFile = () => {
+  // let processing = false;
   const [files, setFiles] = useState<(File[])>([]);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -20,9 +22,32 @@ export const DropzoneFile = () => {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
+  async function startProcessing(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    // processing = true;  
+
+    const formData = new FormData();
+    files.forEach((file) => {
+      formData.append('documents', file);
+    });
+  
+    const response = await axios({
+      method: 'POST',
+      url: `${import.meta.env.VITE_PUBLIC_PROCESS_FILES_SERVER}/process`, 
+      data: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Accept': '*/*',
+      }
+    });
+
+    console.log(response);
+  }
+
+
   return (
     <>
-      <form className="h-1/4 w-full flex flex-col justify-center items-center">
+      <form className="h-1/4 w-full flex flex-col justify-center items-center" onSubmit={startProcessing}>
         <div className="w-4/5 h-3/4 border border-dashed rounded-lg">
           <div
             {...getRootProps()}
@@ -47,13 +72,13 @@ export const DropzoneFile = () => {
           </div>
         </div>
         <div className="w-4/5 flex flex-row justify-end mt-2">
-          <Button className="bg-transparent border border-waikawa-gray-500 mr-3 hover:bg-waikawa-gray-600 disabled:bg-waikawa-gray-950 text-waikawa-gray-50 px-4 py-1 rounded-lg">
+          <Button 
+            className="bg-transparent border border-waikawa-gray-500 mr-3 hover:bg-waikawa-gray-600 disabled:bg-waikawa-gray-950 text-waikawa-gray-50 px-4 py-1 rounded-lg">
             Discard
           </Button>
           <Button
             type="submit"
-            className="bg-waikawa-gray-500 hover:bg-waikawa-gray-600 disabled:bg-waikawa-gray-950 text-waikawa-gray-50 px-4 py-1 rounded-lg"
-          >
+            className="bg-waikawa-gray-500 hover:bg-waikawa-gray-600 disabled:bg-waikawa-gray-950 text-waikawa-gray-50 px-4 py-1 rounded-lg">
             Train Chatbot
           </Button>
         </div>
